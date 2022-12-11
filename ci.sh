@@ -98,6 +98,9 @@ function run_tests_minimal {
   endgroup
 }
 
+# Debugging
+MIRI_TEST_TARGET=x86_64-unknown-linux-gnu ./miri test pass-dep/shims/libc-fs
+
 # host
 run_tests
 

@@ -6,6 +6,7 @@ on:
     branches:
       - 'auto'
       - 'try'
+      - 'debug'
   pull_request:
     branches:
       - 'master'

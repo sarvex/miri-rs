@@ -3,6 +3,7 @@
 
 #![feature(io_error_more)]
 #![feature(io_error_uncategorized)]
+#![allow(unused)]
 
 use std::convert::TryInto;
 use std::ffi::CString;
@@ -12,14 +13,6 @@ use std::os::unix::ffi::OsStrExt;
 use std::path::PathBuf;
 
 fn main() {
-    test_dup_stdout_stderr();
-    test_canonicalize_too_long();
-    test_readlink();
-    test_file_open_unix_allow_two_args();
-    test_file_open_unix_needs_three_args();
-    test_file_open_unix_extra_third_arg();
-    #[cfg(target_os = "linux")]
-    test_o_tmpfile_flag();
     test_tempfile();
 }
 
@@ -170,5 +163,6 @@ fn test_o_tmpfile_flag() {
 /// Test that the [`tempfile`] crate is compatible with miri.
 fn test_tempfile() {
     let dir_path = tmp();
+    eprintln!("dir_path={dir_path:?}");
     tempfile::tempfile_in(dir_path).unwrap();
 }
